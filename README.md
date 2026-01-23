@@ -4,7 +4,8 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-ComfyUI nodes for Qwen3-TTS, supporting high-quality text-to-speech generation, voice design, and voice cloning.
+ComfyUI nodes for **Qwen3-TTS**, supporting high-quality text-to-speech generation, voice design, and voice cloning.
+> **Original Project**: [QwenLM/Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS)
 
 ---
 
@@ -32,7 +33,9 @@ ComfyUI nodes for Qwen3-TTS, supporting high-quality text-to-speech generation, 
    *Note: `flash-attn` is optional but recommended for better performance on NVIDIA GPUs. If installation fails on Windows, the plugin will default to `sdpa` (Scaled Dot Product Attention).*
 
 3. Download Models:
-   - Download Qwen3-TTS models (e.g., `Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice`) from Hugging Face or ModelScope.
+   - **Official Download**: [Hugging Face Collection](https://huggingface.co/collections/Qwen/qwen3-tts)
+   - **Alternative Download (Quark Drive)**: [https://pan.quark.cn/s/010e3ca25022](https://pan.quark.cn/s/010e3ca25022)
+   - Download Qwen3-TTS models (e.g., `Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice`).
    - Place them in: `ComfyUI/models/Qwen3-TTS-Models/`.
    - The directory structure should look like:
      ```
@@ -61,6 +64,7 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
 - **语音设计 (Voice Design)**: 通过自然语言提示词生成具有特定特征的语音。
 - **语音克隆 (Voice Cloning)**: 支持使用参考音频或说话人 ID 生成自定义语音。
 - **灵活配置**: 支持 `bf16`/`fp16`/`fp32` 精度选择，以及多种注意力加速方式 (`sdpa`, `flash_attention_2`, `eager`)。
+> **原项目开源地址**: [QwenLM/Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS)
 
 ### 安装说明
 
@@ -78,7 +82,9 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
    *注意：`flash-attn` 是可选的，但在 NVIDIA 显卡上推荐使用以获得更好性能。如果在 Windows 上安装失败，插件将默认使用 `sdpa` (Scaled Dot Product Attention) 加速，无需额外操作。*
 
 3. 下载模型：
-   - 从 Hugging Face 或 ModelScope 下载 Qwen3-TTS 模型 (例如 `Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice`)。
+   - **模型官方下载地址**: [Hugging Face Collection](https://huggingface.co/collections/Qwen/qwen3-tts)
+   - **模型网盘下载地址 (夸克)**: [https://pan.quark.cn/s/010e3ca25022](https://pan.quark.cn/s/010e3ca25022)
+   - 下载 Qwen3-TTS 模型 (例如 `Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice`)。
    - 将模型文件夹放置在：`ComfyUI/models/Qwen3-TTS-Models/` 目录下。
    - 目录结构应如下所示：
      ```
