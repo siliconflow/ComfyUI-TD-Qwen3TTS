@@ -22,7 +22,7 @@ ComfyUI nodes for **Qwen3-TTS**, supporting high-quality text-to-speech generati
 1. Clone this repository into your ComfyUI `custom_nodes` directory:
    ```bash
    cd ComfyUI/custom_nodes
-   git clone [https://github.com/your-username/ComfyUI-TD-Qwen3TTS.git](https://github.com/AICoderTudou/ComfyUI-TD-Qwen3TTS.git)
+   git clone https://github.com/AICoderTudou/ComfyUI-TD-Qwen3TTS.git
    ```
 
 2. Install dependencies:
