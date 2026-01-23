@@ -1,0 +1,11 @@
+transformers==4.57.3
+accelerate==1.12.0
+gradio
+librosa
+torchaudio
+soundfile
+sox
+onnxruntime
+einops
+modelscope
+git+https://github.com/QwenLM/Qwen3-TTS.git
