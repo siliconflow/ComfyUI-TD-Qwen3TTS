@@ -18,10 +18,19 @@ if parent_dir not in sys.path:
 
 try:
     from qwen_tts.inference.qwen3_tts_model import Qwen3TTSModel
-except ImportError:
-    # 如果找不到 qwen_tts，我们可能是在独立安装中，或者结构不同
-    # 但由于我们是在仓库内部创建的，它应该可以工作。
-    # 这里可以添加回退或错误处理。
+except ImportError as e:
+    print("\n" + "!" * 50)
+    print("Warning / 警告:")
+    print("Failed to import Qwen3TTS dependencies. / 无法导入 Qwen3TTS 依赖项。")
+    print(f"Error details / 错误详情: {e}")
+    print("\nPlease try the following steps to fix this issue / 请尝试以下步骤解决此问题:")
+    print("1. Open terminal in the node directory / 在节点目录下打开终端:")
+    print(f"   cd {os.path.dirname(os.path.abspath(__file__))}")
+    print("2. Install dependencies / 安装依赖:")
+    print("   pip install -r requirements.txt")
+    print("3. If using portable ComfyUI / 如果使用便携版 ComfyUI:")
+    print("   path/to/python_embeded/python.exe -m pip install -r requirements.txt")
+    print("!" * 50 + "\n")
     pass
 
 def get_all_speakers():
