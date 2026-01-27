@@ -130,3 +130,17 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
 
 ### 许可证
 本项目采用 [Apache 2.0 许可证](LICENSE) 进行授权。
+
+---
+
+### 常见问题 (FAQ)
+
+#### 1. "Model type 'base' does not support preset speaker 'Vivian'..." 报错怎么办？
+- **原因**：您正在使用 **Base** 模型（例如 `Qwen3-TTS-12Hz-1.7B-Base`）。Base 模型主要用于语音克隆，**不包含**任何预设说话人（如 Vivian, Serena 等）。预设说话人仅存在于 **CustomVoice** 模型中。
+- **解决方法**：
+  - **方法 A（推荐）**：如果您想使用预设说话人，请在加载器中选择 **CustomVoice** 版本的模型。
+  - **方法 B（语音克隆）**：如果您必须使用 Base 模型，您需要为您使用的每一个角色名（包括 "Vivian"）提供参考音频。使用 `TD Qwen3 TTS Define Speaker` 节点上传一段音频，将 `name` 设置为对应的角色名（如 "Vivian"），然后连接到对话节点的 `speaker_list`。
+
+#### 2. 日志显示 "code_predictor_config is None"
+- **原因**：这是正常的**提示信息 (INFO)**，并非错误。它表示模型加载时检测到配置文件中缺少部分非必要配置，并自动使用了正确的默认值进行初始化。
+- **影响**：**无任何负面影响**。模型会自动使用默认参数（hidden_size=1024等）完成初始化，您可以忽略此日志继续使用。
