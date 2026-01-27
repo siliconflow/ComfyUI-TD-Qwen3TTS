@@ -62,6 +62,7 @@ ComfyUI nodes for **Qwen3-TTS**, supporting high-quality text-to-speech generati
    - **Dynamic Input**: Supports passing a JSON string or Python List string (e.g., `[{'name': 'Role', 'instruct': '...'}]`) to the `speakers_config` input.
    - Connects seamlessly to the Multi Dialog node.
 6. **Define Speaker**: Use `TD Qwen3 TTS Define Speaker` to create a single custom speaker from an audio reference (Voice Cloning).
+7. **JSON Parsing**: Use `TD Parse Json` to parse JSON strings or Python lists/dicts and extract specific values by key or index. useful for handling dynamic configurations.
 
 ### License
 This project is licensed under the [Apache 2.0 License](LICENSE).
@@ -122,6 +123,10 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
    - **动态输入**: 支持将 JSON 字符串或 Python 列表字符串（例如 `[{'name': '角色名', 'instruct': '...'}]`）传递给 `speakers_config` 输入端。
    - 可无缝连接到多角色对话节点。
 6. **定义角色**: 使用 `TD Qwen3 TTS Define Speaker` 节点通过参考音频创建一个自定义角色（语音克隆）。
+7. **JSON 解析**: 使用 `TD Parse Json` 节点解析 JSON 字符串或 Python 列表/字典，并通过键名或索引提取特定值。适用于处理动态配置数据。
+
+> 更新日期: 2026-01-27
+
 
 ### 许可证
 本项目采用 [Apache 2.0 许可证](LICENSE) 进行授权。

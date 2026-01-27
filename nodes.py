@@ -680,6 +680,60 @@ class TDQwen3TTSVoiceClone:
         audio_tensor = torch.from_numpy(wavs[0]).unsqueeze(0).unsqueeze(0)
         return ({"waveform": audio_tensor, "sample_rate": out_sr},)
 
+class TDParseJson:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "json_string": ("STRING", {"multiline": True, "default": "{}"}),
+                "key": ("STRING", {"default": "key"}),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("value_json",)
+    FUNCTION = "parse_json"
+    CATEGORY = "Qwen3TTS"
+
+    def parse_json(self, json_string, key):
+        try:
+            data = json.loads(json_string)
+        except Exception:
+            try:
+                data = ast.literal_eval(json_string)
+            except Exception:
+                print("TDParseJson: Failed to parse input string")
+                raise ValueError("TDParseJson: 传入的数据格式不正确，请仔细检查JSON数据格式。")
+
+        val = None
+        if isinstance(data, dict):
+            val = data.get(key, None)
+            if val is None and key not in data:
+                 print(f"TDParseJson: Key '{key}' not found in dict")
+                 return ("{}",)
+        elif isinstance(data, list):
+            try:
+                idx = int(key)
+                if 0 <= idx < len(data):
+                    val = data[idx]
+                else:
+                    print(f"TDParseJson: Index {idx} out of bounds")
+                    return ("{}",)
+            except ValueError:
+                print(f"TDParseJson: Key '{key}' is not a valid integer index for list")
+                return ("{}",)
+        else:
+             print("TDParseJson: Input is not a dict or list")
+             return ("{}",)
+
+        # Convert back to JSON string
+        try:
+            res = json.dumps(val, ensure_ascii=False)
+            return (res,)
+        except Exception as e:
+            print(f"TDParseJson: Failed to serialize result: {e}")
+            return ("{}",)
+
 NODE_CLASS_MAPPINGS = {
     "TDQwen3TTSModelLoader": TDQwen3TTSModelLoader,
     "TDQwen3TTSCustomVoice": TDQwen3TTSCustomVoice,
@@ -688,6 +742,7 @@ NODE_CLASS_MAPPINGS = {
     "TDQwen3TTSBatchGenerateSpeaker": TDQwen3TTSBatchGenerateSpeaker,
     "TDQwen3TTSVoiceDesign": TDQwen3TTSVoiceDesign,
     "TDQwen3TTSVoiceClone": TDQwen3TTSVoiceClone,
+    "TDParseJson": TDParseJson,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -698,4 +753,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "TDQwen3TTSBatchGenerateSpeaker": "TD Qwen3 TTS Batch Generate Speaker",
     "TDQwen3TTSVoiceDesign": "TD Qwen3 TTS Voice Design",
     "TDQwen3TTSVoiceClone": "TD Qwen3 TTS Voice Clone",
+    "TDParseJson": "TD Parse Json",
 }
