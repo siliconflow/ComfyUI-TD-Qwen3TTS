@@ -726,12 +726,16 @@ class TDParseJson:
              print("TDParseJson: Input is not a dict or list")
              return ("{}",)
 
-        # Convert back to JSON string
+        # Determine output format based on value type
         try:
-            res = json.dumps(val, ensure_ascii=False)
-            return (res,)
+            if isinstance(val, (dict, list)):
+                res = json.dumps(val, ensure_ascii=False)
+                return (res,)
+            else:
+                # For primitive types (str, int, float, bool, None), return as string directly
+                return (str(val),)
         except Exception as e:
-            print(f"TDParseJson: Failed to serialize result: {e}")
+            print(f"TDParseJson: Failed to process result: {e}")
             return ("{}",)
 
 NODE_CLASS_MAPPINGS = {
