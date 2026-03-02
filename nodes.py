@@ -118,6 +118,7 @@ class TDQwen3TTSModelLoader:
     CATEGORY = "Qwen3TTS"
 
     def load_model(self, model_path, precision, device, attn_implementation, auto_download, download_source):
+        auto_download = False
         dtype = torch.bfloat16 if precision == "bf16" else torch.float16 if precision == "fp16" else torch.float32
         
         print(f"Loading Qwen3-TTS Model from {model_path} (Precision: {precision}, Device: {device}, Attn: {attn_implementation})...")
